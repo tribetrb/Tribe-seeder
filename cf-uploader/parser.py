@@ -52,11 +52,13 @@ def read_hard_seeds(hard_seeds_file):
     return hard_seeds
 
 
-def read_seed_dump(seeds_file, valid_port="62458"):
+def read_seed_dump(seeds_file, valid_port=None):
 
     """ Read the good ip addresses from the seeds dump. """
 
     logger.debug("Reading seeds dump file: {}".format(seeds_file))
+
+    valid_port = "62458" if valid_port is None else valid_port
 
     addresses = []
     with open(seeds_file) as seeds:

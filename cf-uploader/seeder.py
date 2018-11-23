@@ -16,11 +16,15 @@ def main():
     """ Main entry point. """
 
     configuration = config.read_local_config()
+    try:
+        custom_port = configuration['custom_port']
+    except KeyError:
+        custom_port = None
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
     try:
-        seed_candidates = parser.read_seed_dump(configuration['seed_dump'])
+        seed_candidates = parser.read_seed_dump(configuration['seed_dump'], custom_port)
         hard_seeds = parser.read_hard_seeds(configuration['hard_seeds'])
     except errors.SeedsNotFound as e:
         print("ERROR: Problem reading seeds - {}".format(e.message))
