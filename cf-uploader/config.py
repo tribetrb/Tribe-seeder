@@ -5,9 +5,10 @@ import logging
 import ConfigParser
 
 logger = logging.getLogger(__name__)
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 CONF_FILE_LOCATIONS = [
-    os.path.join(os.getcwd(), 'seeder.conf'),
+    os.path.join(dir_path, 'seeder.conf'),
     '/etc/seeder.conf',
     os.path.expanduser('~/.seeder/seeder.conf'),
 ]
