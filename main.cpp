@@ -398,12 +398,12 @@ extern "C" void* ThreadStats(void*) {
 }
 
 static const string mainnet_seeds[] = {"seeds.litecoinca.sh", ""};
-static const string testnet_seeds[] = {"127.0.0.1", ""};
+static const string testnet_seeds[] = {"testseeds.litecoinca.sh", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
+    //db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
