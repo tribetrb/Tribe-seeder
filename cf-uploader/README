@@ -1,4 +1,4 @@
-Put seeder.conf in either /etc/seeder.conf or ~/.seeder/seeder.conf
+Put seeder.conf in ~/.trbseeder/seeder.conf
 
 Configure with your params
 
