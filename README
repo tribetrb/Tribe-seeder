@@ -1,7 +1,7 @@
-Litecoin Cash Seeder
+Tribe Seeder
 ====================
 
-litecoincash-seeder is a crawler for the Litecoin Cash network, which 
+Tribe-seeder is a crawler for the Tribe network, which 
 exposes a list of reliable nodes via a built-in DNS server, or instead
 just generates that list to push to a remote CloudFlare server.
 
