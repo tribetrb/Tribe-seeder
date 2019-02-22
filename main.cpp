@@ -35,7 +35,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false), ipv4_proxy(NULL), ipv6_proxy(NULL) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "litecoincash-seeder\n"
+    static const char *help = "tribe-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -253,8 +253,8 @@ public:
     dns_opt.host = opts->host;
     dns_opt.ns = opts->ns;
     dns_opt.mbox = opts->mbox;
-    dns_opt.datattl = 3600;
-    dns_opt.nsttl = 40000;
+    dns_opt.datattl = 86400*7;
+    dns_opt.nsttl = 86400;
     dns_opt.cb = GetIPList;
     dns_opt.port = opts->nPort;
     dns_opt.nRequests = 0;
@@ -397,13 +397,14 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seeds.litecoinca.sh", ""};
-static const string testnet_seeds[] = {"testseeds.litecoinca.sh", ""};
+static const string mainnet_seeds[] = {"dnsseed1.tribecrypto.net", "dnsseed2.tribecrypto.net", ""};
+static const string testnet_seeds[] = {"", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    //db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
+    db.Add(CService("144.202.75.241", 9399), true);
+    db.Add(CService("45.76.92.112", 9399), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
